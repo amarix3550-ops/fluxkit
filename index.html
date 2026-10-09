@@ -4,56 +4,108 @@
   <title>FluxKit</title>
   <style>
     body {
-      background: #000000;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* ANIMATED BACKGROUND */
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #330000, #000000);
+      animation: pulse 6s infinite alternate;
+      z-index: -1;
+    }
+
+    @keyframes pulse {
+      0% { filter: brightness(0.8); }
+      100% { filter: brightness(1.2); }
     }
 
     /* NAVBAR */
     .navbar {
-      width: 100%;
-      background: #1a0000;
-      padding: 20px 0;
       display: flex;
       justify-content: center;
       gap: 40px;
-      box-shadow: 0 0 20px #660000;
+      padding: 20px;
+      background: rgba(26,0,0,0.9);
+      box-shadow: 0 0 25px #660000;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
     }
 
     .nav-item {
       color: #ff4d4d;
       font-size: 22px;
-      text-decoration: none;
       padding: 10px 20px;
       border-radius: 8px;
-      transition: 0.3s;
       cursor: pointer;
+      transition: 0.3s;
     }
 
     .nav-item:hover {
       background: #660000;
-      color: #ffffff;
+      color: #fff;
       box-shadow: 0 0 15px #ff3333;
+    }
+
+    .active {
+      background: #990000;
+      color: #fff;
+      box-shadow: 0 0 20px #ff1a1a;
     }
 
     /* TITLE */
     .title {
-      font-size: 70px;
-      margin-top: 80px;
       text-align: center;
+      font-size: 80px;
+      margin-top: 70px;
       color: #ff3333;
-      text-shadow: 0 0 25px #ff1a1a;
+      text-shadow: 0 0 30px #ff1a1a;
+      animation: glowTitle 3s infinite alternate;
+    }
+
+    @keyframes glowTitle {
+      0% { text-shadow: 0 0 20px #ff1a1a; }
+      100% { text-shadow: 0 0 40px #ff4d4d; }
+    }
+
+    /* SECTIONS */
+    .section {
+      display: none;
+      padding: 60px 20px;
+      text-align: center;
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section h2 {
+      font-size: 45px;
+      color: #ff4d4d;
+      text-shadow: 0 0 15px #ff1a1a;
+      margin-bottom: 20px;
+    }
+
+    .section p {
+      font-size: 24px;
+      color: #ff9999;
+      margin: 10px 0;
     }
 
     /* DOWNLOAD BUTTON */
     .btn {
       display: inline-block;
-      margin-top: 40px;
       padding: 18px 50px;
       background: #990000;
       border-radius: 12px;
@@ -69,32 +121,11 @@
       box-shadow: 0 0 35px #ff3333;
     }
 
-    /* SECTIONS */
-    .section {
-      display: none;
-      padding: 60px 20px;
-      text-align: center;
-      animation: fadeIn 0.4s ease-in-out;
-    }
-
-    .section h2 {
-      font-size: 40px;
-      color: #ff4d4d;
-      text-shadow: 0 0 15px #ff1a1a;
-      margin-bottom: 20px;
-    }
-
-    .section p {
-      font-size: 24px;
-      margin: 10px 0;
-      color: #ff9999;
-    }
-
     /* GIF / IMAGE BOXES */
     .gif-box {
-      margin: 30px auto;
       width: 70%;
-      height: 300px;
+      height: 250px;
+      margin: 30px auto;
       background: #1a0000;
       border: 2px solid #660000;
       border-radius: 12px;
@@ -102,80 +133,10 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #ff4d4d;
       font-size: 22px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      color: #ff4d4d;
     }
   </style>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.style.display = 'none');
-      document.getElementById(id).style.display = 'block';
-    }
-  </script>
-</head>
-
-<body>
-
-  <!-- NAVBAR -->
-  <div class="navbar">
-    <div class="nav-item" onclick="showSection('download')">Official Download</div>
-    <div class="nav-item" onclick="showSection('features')">What You Get</div>
-    <div class="nav-item" onclick="showSection('media')">Screenshots / GIFs</div>
-    <div class="nav-item" onclick="showSection('more')">More</div>
-  </div>
-
-  <!-- TITLE -->
-  <div class="title">FluxKit</div>
-
-  <!-- DEFAULT SECTION -->
-  <div id="download" class="section" style="display:block;">
-    <h2>Official Download</h2>
-    <a class="btn" href="#">Download FluxKit</a>
-    <p>Latest version • Safe • Updated frequently</p>
-  </div>
-
-  <!-- FEATURES SECTION -->
-  <div id="features" class="section">
-    <h2>What You Get</h2>
-    <p>✔ Custom UI Modules</p>
-    <p>✔ Drift Physics</p>
-    <p>✔ Car Handling System</p>
-    <p>✔ Anti‑Exploit Tools</p>
-    <p>✔ Creator Utilities</p>
-    <p>✔ Map Loader</p>
-    <p>✔ Custom Camera System</p>
-    <p>✔ Vehicle Damage System</p>
-    <p>✔ Neon UI Theme Engine</p>
-    <p>✔ FPS Boost Tools</p>
-    <p>✔ Developer Console Tools</p>
-    <p>✔ Script Manager</p>
-    <p>✔ Sound Engine</p>
-    <p>✔ Animation Controller</p>
-    <p>✔ More coming soon…</p>
-  </div>
-
-  <!-- MEDIA SECTION -->
-  <div id="media" class="section">
-    <h2>Screenshots / GIFs</h2>
-    <div class="gif-box">Drop a GIF or screenshot here later</div>
-    <div class="gif-box">Another media box</div>
-  </div>
-
-  <!-- MORE SECTION -->
-  <div id="more" class="section">
-    <h2>More</h2>
-    <p>✔ Updates</p>
-    <p>✔ Patch Notes</p>
-    <p>✔ Developer Logs</p>
-    <p>✔ Future Plans</p>
-    <p>✔ Contact</p>
-  </div>
-
-</body>
-</html>
+    function showSection(id, element
