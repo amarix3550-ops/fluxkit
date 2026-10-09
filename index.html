@@ -139,4 +139,98 @@
   </style>
 
   <script>
-    function showSection(id, element
+    function showSection(id, element) {
+      document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      element.classList.add('active');
+    }
+  </script>
+</head>
+
+<body>
+
+  <div class="bg"></div>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-item active" onclick="showSection('download', this)">Official Download</div>
+    <div class="nav-item" onclick="showSection('features', this)">What You Get</div>
+    <div class="nav-item" onclick="showSection('media', this)">Screenshots / GIFs</div>
+    <div class="nav-item" onclick="showSection('more', this)">More</div>
+    <div class="nav-item" onclick="showSection('roadmap', this)">Roadmap</div>
+    <div class="nav-item" onclick="showSection('changelog', this)">Changelog</div>
+  </div>
+
+  <div class="title">FluxKit</div>
+
+  <!-- DOWNLOAD -->
+  <div id="download" class="section" style="display:block;">
+    <h2>Official Download</h2>
+    <a class="btn" href="#">Download FluxKit</a>
+    <p>Latest version • Updated weekly • Safe</p>
+  </div>
+
+  <!-- FEATURES -->
+  <div id="features" class="section">
+    <h2>What You Get</h2>
+    <p>✔ Custom UI Modules</p>
+    <p>✔ Drift Physics</p>
+    <p>✔ Car Handling System</p>
+    <p>✔ Anti‑Exploit Tools</p>
+    <p>✔ Creator Utilities</p>
+    <p>✔ Map Loader</p>
+    <p>✔ Camera System</p>
+    <p>✔ Vehicle Damage</p>
+    <p>✔ Neon Theme Engine</p>
+    <p>✔ FPS Boost Tools</p>
+    <p>✔ Script Manager</p>
+    <p>✔ Sound Engine</p>
+    <p>✔ Animation Controller</p>
+    <p>✔ UI Animator</p>
+    <p>✔ Custom Keybind System</p>
+    <p>✔ Debug Console</p>
+    <p>✔ More coming soon…</p>
+  </div>
+
+  <!-- MEDIA -->
+  <div id="media" class="section">
+    <h2>Screenshots / GIFs</h2>
+    <div class="gif-box">Add GIFs here</div>
+    <div class="gif-box">Add screenshots here</div>
+  </div>
+
+  <!-- MORE -->
+  <div id="more" class="section">
+    <h2>More</h2>
+    <p>✔ Updates</p>
+    <p>✔ Patch Notes</p>
+    <p>✔ Future Plans</p>
+    <p>✔ Contact</p>
+  </div>
+
+  <!-- ROADMAP -->
+  <div id="roadmap" class="section">
+    <h2>Roadmap</h2>
+    <p>✔ New Drift Engine</p>
+    <p>✔ New UI Theme</p>
+    <p>✔ New Anti‑Exploit</p>
+    <p>✔ New Vehicle Physics</p>
+    <p>✔ New Sound Engine</p>
+    <p>✔ More modules</p>
+  </div>
+
+  <!-- CHANGELOG -->
+  <div id="changelog" class="section">
+    <h2>Changelog</h2>
+    <p>v1.0 — Initial Release</p>
+    <p>v1.1 — Added Drift Physics</p>
+    <p>v1.2 — Added Anti‑Exploit</p>
+    <p>v1.3 — Added UI Engine</p>
+    <p>v1.4 — Added GIF Support</p>
+    <p>v1.5 — Added Roadmap + Changelog</p>
+  </div>
+
+</body>
+</html>
